@@ -30,5 +30,20 @@ describe('Portfolio', function(){
       expect(tech.stocks[1].count).to.equal(35);
     });
   });
+
+  describe('#del', function(){
+    it('should delete a stock object from portfolio stocks', function(){
+      var tech = new Portfolio('Tech Portfolio');
+      tech.add('aapl', 50);
+      tech.add('msft', 35);
+
+      tech.del('aapl', 10);
+      tech.del('msft', 40);
+      tech.del('aapl', 20);
+
+      expect(tech.stocks).to.have.length(1);
+      expect(tech.stocks[0].count).to.equal(20);
+    });
+  });
 });
 
