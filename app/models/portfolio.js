@@ -7,19 +7,19 @@ function Portfolio(name){
   this.stocks = [];
 }
 
-Portfolio.prototype.add = function(symbol, amount){
-  var index = findStock(this.stocks, symbol);
+Portfolio.prototype.add = function(symbol, amount, price){
+  var index = Portfolio.findStock(this.stocks, symbol);
 
   if(index >= 0){
     this.stocks[index].count += amount;
   }else{
-    var stock = new Stock(symbol, amount);
+    var stock = new Stock(symbol, amount, price);
     this.stocks.push(stock);
   }
 };
 
 Portfolio.prototype.del = function(symbol, amount){
-  var index = findStock(this.stocks, symbol);
+  var index = Portfolio.findStock(this.stocks, symbol);
 
   if(index >= 0){
     this.stocks[index].count -= amount;
@@ -30,9 +30,7 @@ Portfolio.prototype.del = function(symbol, amount){
   }
 };
 
-// PRIVATE HELPER FUNCTIONS ///
-
-function findStock(stocks, symbol){
+Portfolio.findStock = function(stocks, symbol){
   for(var i = 0; i < stocks.length; i++){
     if(stocks[i].symbol === symbol.toUpperCase()){
       return i;
@@ -40,7 +38,7 @@ function findStock(stocks, symbol){
   }
 
   return -1;
-}
+};
 
 module.exports = Portfolio;
 

@@ -20,9 +20,9 @@ describe('Portfolio', function(){
   describe('#add', function(){
     it('should add a stock object to portfolio stocks', function(){
       var tech = new Portfolio('Tech Portfolio');
-      tech.add('aapl', 50);
-      tech.add('msft', 35);
-      tech.add('aapl', 25);
+      tech.add('aapl', 50, 20);
+      tech.add('msft', 35, 15);
+      tech.add('aapl', 25, 20);
 
       expect(tech.stocks).to.have.length(2);
       expect(tech.stocks[0]).to.be.instanceof(Stock);

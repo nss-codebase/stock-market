@@ -2,10 +2,10 @@
 
 var request = require('request');
 
-function Stock(symbol, count){
+function Stock(symbol, count, price){
   this.symbol = symbol.toUpperCase();
   this.count = parseInt(count);
-  this.price = 0;
+  this.price = price;
 }
 
 Stock.getQuote = function(symbol, cb){
